@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">ToDoLizzd</string>
+    <string name="rendah">Rendah</string>
+    <string name="sedang">Sedang</string>
+    <string name="tinggi">Tinggi</string>
+    <string name="sudah">Sudah</string>
+    <string name="belum">Belum</string>
 </resources>
