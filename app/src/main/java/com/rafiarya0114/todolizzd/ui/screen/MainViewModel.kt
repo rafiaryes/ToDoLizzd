@@ -16,4 +16,8 @@ class MainViewModel : ViewModel() {
         Task(9, "Ngoding bareng temen", "Biar ga suntuk ngoding sendirian", "Sedang", false),
         Task(10, "Survey topik skripsi", "Masih bingung ambil yang mana", "Tinggi", false)
     )
+
+    fun getTask(id: Long): Task?{
+        return  data.find { it.id == id }
+    }
 }
