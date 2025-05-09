@@ -122,13 +122,7 @@ fun ListItem(task: Task, onClick: () -> Unit) {
 
         )
         Text(
-            text = stringResource(
-                when (task.priority) {
-                    1 -> R.string.tinggi
-                    2 -> R.string.sedang
-                    else -> R.string.rendah
-                }
-            )
+            text = task.priority
         )
         Text(text = stringResource(if (task.isDone) R.string.sudah else R.string.belum))
     }
