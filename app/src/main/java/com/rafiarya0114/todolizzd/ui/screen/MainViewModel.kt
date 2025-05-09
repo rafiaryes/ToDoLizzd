@@ -15,7 +15,5 @@ class MainViewModel (dao: TaskDao): ViewModel() {
         initialValue = emptyList()
     )
 
-    fun getTask(id: Long): Task?{
-        return  data.value.find { it.id == id }
-    }
+
 }
