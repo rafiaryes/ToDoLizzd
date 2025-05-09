@@ -65,6 +65,7 @@ fun DetailScreen(navController: NavHostController, id: Long? = null) {
     var desc by remember { mutableStateOf("") }
     var priority by remember { mutableStateOf("") }
     var isDone by remember { mutableStateOf(false) }
+    var showDialog by remember { mutableStateOf(false) }
 
     LaunchedEffect(Unit) {
         if (id == null) return@LaunchedEffect
@@ -117,8 +118,7 @@ fun DetailScreen(navController: NavHostController, id: Long? = null) {
                     }
                     if (id != null) {
                         DeleteAction {
-                            viewModel.delete(id)
-                            navController.popBackStack()
+                            showDialog = true
                         }
                     }
                 }
@@ -137,6 +137,14 @@ fun DetailScreen(navController: NavHostController, id: Long? = null) {
             onIsDoneChange = { isDone = it },
             modifier = Modifier.padding(padding)
         )
+        if (id != null && showDialog) {
+            DisplayAlertDialog(
+                onDismissRequest = { showDialog = false }) {
+                showDialog = false
+                viewModel.delete(id)
+                navController.popBackStack()
+            }
+        }
 
     }
 }
