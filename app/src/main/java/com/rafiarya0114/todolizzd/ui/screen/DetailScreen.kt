@@ -100,7 +100,9 @@ fun DetailScreen(navController: NavHostController, id: Long? = null) {
                             return@IconButton
                         }
                         if (id == null) {
-                            viewModel.insert(title, desc,priority,isDone)
+                            viewModel.insert(title, desc, priority, isDone)
+                        } else {
+                            viewModel.update(id, title, desc, priority, isDone)
                         }
                         navController.popBackStack()
                     }) {
