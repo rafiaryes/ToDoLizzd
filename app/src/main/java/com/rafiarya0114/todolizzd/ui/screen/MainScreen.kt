@@ -32,14 +32,17 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import com.rafiarya0114.todolizzd.R
 import com.rafiarya0114.todolizzd.model.Task
+import com.rafiarya0114.todolizzd.navigation.Screen
 import com.rafiarya0114.todolizzd.ui.theme.ToDoLizzdTheme
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun MainScreen() {
-    val context = LocalContext.current
+fun MainScreen(navController: NavHostController) {
+
     Scaffold(
         topBar = {
             TopAppBar(
@@ -55,7 +58,7 @@ fun MainScreen() {
         floatingActionButton = {
             FloatingActionButton(
                 onClick = {
-                    Toast.makeText(context, R.string.belum_bisa, Toast.LENGTH_SHORT).show()
+                    navController.navigate(Screen.FormBaru.route)
                 }
             ) {
                 Icon(
@@ -133,6 +136,6 @@ fun ListItem(task: Task, onClick: () -> Unit) {
 @Composable
 fun MainScreenPreview() {
     ToDoLizzdTheme {
-        MainScreen()
+        MainScreen(rememberNavController())
     }
 }
