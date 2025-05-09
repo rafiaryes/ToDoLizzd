@@ -21,8 +21,8 @@ class DetailViewModel(private val dao: TaskDao) : ViewModel() {
         }
     }
 
-    fun getTask(id: Long): Task? {
-        return null
+    suspend fun getTask(id: Long): Task? {
+        return dao.getTaskById(id)
     }
 
     fun update(id: Long,title: String, desc: String, priority: String, isDone: Boolean) {
@@ -36,6 +36,12 @@ class DetailViewModel(private val dao: TaskDao) : ViewModel() {
 
         viewModelScope.launch(Dispatchers.IO) {
             dao.update(task)
+        }
+    }
+
+    fun delete(id: Long){
+        viewModelScope.launch(Dispatchers.IO) {
+            dao.deleteById(id)
         }
     }
 
